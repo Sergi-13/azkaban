@@ -1,0 +1,34 @@
+Aquest es l'dtorde procedure de la taula Azkanan
+``
+CREATE PROCEDURE OtorgarPermís
+	@Número_Pres int, @data_inici date, @dies_permís int
+AS BEGIN
+	--Comprovar si ha complert el 50% de la condemna
+	DECLARE @percentatge as int
+	SET @percentatge = dbo.percentage_complert (@Número_pres);
+	if (@percentatge < 50)
+		BEGIN
+			RAISERROR ('No es pot otorgar el permís el pres no ha complert el 50% de la seva condemna', 1, 1)
+		END
+	--Comprovar si hi ha solapaments amb altres permissos
+	DECLARE @data_final date
+	--Don valor a la variable data_final
+	SELECT @data_final = DATEADD (DAY, @dies_permís, @data_inici)
+	DECLARE @solapaments as int
+	--Compta els solapaments que hi ha amb els permissos
+	SELECT @solapaments = COUNT(*)
+			FROM Permíssos P
+			WHERE NOT(P.fins_a < @data_final OR P.des_de > @data_final) AND
+					P.Número_pres = @Número_Pres
+	if (@solapaments>0)
+		BEGIN
+			RAISERROR ('No es pot donar el permís se solapa en un altre', 1, 1)
+		END
+	else
+	--En el cas de que no hi hagi solapament inserta les dades del permís
+		BEGIN
+			INSERT into Permíssos (des_de, fins_a, Número_pres)
+				values (@data_inici, @data_final, @Número_Pres);
+		END
+END
+``
