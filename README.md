@@ -8,7 +8,7 @@ Del pres ens interessa el seu número identificador, el nom i la data d'ingrés.
 Els presos estan confinats en cel·les, cada cel·la té un número i un aforament. 
 També apuntem a quin número de mòdul es troba la cel·la.
 Els presos poden gaudir de permisos ( sempre que hagin complert més d'un 50% de comdenna ). 
-Un permís comença en una data i finalitza en una altra data. No es poden sol·lapar permisos.
+Un permís comença en una data i finalitza en una altra data. No es poden sol·lapar permisos (un mateix prés no pot tenir dos permisos a la vegada ).
 
 ## MCD
 
@@ -30,8 +30,8 @@ Un permís comença en una data i finalitza en una altra data. No es poden sol·
 
 Fes les funcions:
 
-* T04 - Calcula data de sortida de la presó. Donat un prés ens diu quin dia surt.
-* T05 - Calcula % de comdemna. Donat un pres ens diu el % de comdemna que porta complert.
+* T04 - Calcula data de sortida de la presó. Donat un prés ens diu quin dia surt. `calcula_data_sortida`
+* T05 - Calcula % de comdemna. Donat un pres ens diu el % de comdemna que porta complert. `calcula_pct_complert`
 
 ## Procediments:
 
