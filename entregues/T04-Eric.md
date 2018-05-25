@@ -2,15 +2,20 @@ Funció "Dia que surt"
 
 ```sql
 
-create function dbo.diaquesurt(@pres as int)
+create function dbo.diasurt(@pres as int)
 returns date
 as begin
-	declare @dia as date
-	set @dia=(select DATEADD(day,sum(c.dies_pel_delicte),p.data_ingres)
-				from pres p
-				inner join condemna c
-				on p.id=c.id_pres
-				where p.id=@pres)
+	declare @dia as date, @data_ingres as date, @dies_delicte as int
+	set @dia=(select DATEADD(day,@dies_delicte,@data_ingres))
+	set @data_ingres= (select data_ingres
+				from pres
+				where id=@pres)
+				
+	set @dies_delicte= (select sum(dies_pel_delicte)
+				from condemna
+				where id_pres=@pres)
+				
+	set @dia=(select DATEADD(day,@dies_delicte,@data_ingres))
 	return @dia
 end
 
