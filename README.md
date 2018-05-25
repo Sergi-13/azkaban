@@ -35,11 +35,19 @@ Fes les funcions:
 
 ## Procediments:
 
-* Fes el procediment `otorgar permís` que funciona segons les normes de l'enunciat i rep el següents paràmetres:
+* T06 - Fes el procediment `otorgar permís` que funciona segons les normes de l'enunciat i rep el següents paràmetres:
   * Número de dies de permís.
   * Pres
   * Dia inici del permís
-  
+
+## Cursors:
+
+* T07 - Modifica la taula de presos, crea el camp "número de permisos gaudits". Crea un cursor que resegueixi tots els permisos penitenciaris, per a cada permís cal que sumi 1 al "número de permisos gaudits" d'aquell pres. _(Nota: es podria haver fet amb un simple update, és només per treballar cursors )
+
+## Trigguers:
+
+* T08 - Cada cop que s'inserti un permís penitenciari cal sumar 1 al "número de permisos gaudits", quan s'esborrin cal restar 1.
+
 
 # Entregues:
 
