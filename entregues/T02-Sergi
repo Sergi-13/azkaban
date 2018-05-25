@@ -1,0 +1,60 @@
+Aquests són els create tables de la taula Azkanan
+``
+BEGIN TRY
+	DROP TABLE IF EXISTS Permíssos
+	DROP TABLE IF EXISTS Condemnes
+	DROP TABLE IF EXISTS Pressos
+	DROP TABLE IF EXISTS Celes
+	DROP TABLE IF EXISTS Delictes
+END TRY
+BEGIN CATCH
+END CATCH
+CREATE TABLE Delictes (
+	Codi int not null,
+	Nom varchar(100) not null,
+	constraint Delicte_pk
+		primary key (Codi)
+);
+CREATE TABLE Celes (
+	Número int not null,
+	Aforament int not null,
+	Número_mòdul int not null,
+	constraint Celes_pk
+		primary key (Número)
+);
+CREATE TABLE Pressos (
+	Número int not null,
+	Nom varchar(100) not null,
+	Data_ingrés date not null,
+	Número_cela int not null,
+	constraint Pressos_pk
+		primary key (Número),
+	constraint Pressos_a_celes
+		foreign key (Número_cela)
+		references Celes (Número)
+		ON UPDATE CASCADE
+);
+CREATE TABLE Condemnes (
+	dies_pel_delicte int not null,
+	Codi_Delicte int not null,
+	Número_pres int not null,
+	constraint Condemnes_pk
+		primary key (Codi_delicte, Número_pres),
+	constraint Condemnes_a_delictes
+		foreign key (Codi_delicte)
+		references Delictes (Codi),
+	constraint Condemnes_a_pressos
+		foreign key (Número_pres)
+		references Pressos (Número)
+);
+CREATE TABLE Permíssos (
+	des_de date not null,
+	fins_a date not null,
+	Número_pres int not null,
+	constraint Permís_pk
+		primary key (des_de, Número_pres),
+	constraint Permís_a_presos
+		foreign key (Número_pres)
+		references Pressos (Número)
+);
+``
