@@ -1,0 +1,20 @@
+Aquests són els inserts de la taual Azkanan
+``
+INSERT INTO Delictes(Codi, Nom)
+	values(1,'Estatuto Internacional del Secreto Mágico'),
+		(2, 'Torturar con la maldición Cruciatus'),
+		(3, 'Assessinar');
+INSERT INTO Celes(Número, Aforament, Número_mòdul)
+	values (1, 2, 1),
+		(2, 3, 2),
+		(3, 2, 1);
+INSERT INTO Pressos (Número, Nom, Data_ingrés, Número_cela)
+	values (1, 'Carlotta Pinkston', '2018-1-1', 1),
+		(2, 'Bartemius Crouch Jr', '2015-1-1', 2),
+		(3, 'Antonin Dolohov', '2016-5-1', 3);
+INSERT INTO Condemnes (dies_pel_delicte, Codi_Delicte, Número_pres)
+	values (600, 1, 1),
+		(300, 2, 2),
+		(900, 3, 2),
+		(900, 3, 3);
+``
