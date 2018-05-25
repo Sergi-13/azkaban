@@ -1,7 +1,7 @@
-Funcio Percentatge
+Funció Percentatge
 
 
-```
+```sql
 
 create function dbo.percentatge (@numero_pres as int)
 returns int
