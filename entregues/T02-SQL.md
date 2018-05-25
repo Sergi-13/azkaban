@@ -19,7 +19,7 @@ create table [cel·la](
 create table pres(
 	id int identity not null,
 	nom varchar(300) not null,
-	data_ingres datetime default getdate() not null,
+	data_ingres date default getdate() not null,
 	id_cela int not null,
 	constraint pres_pk
 		primary key (id),
@@ -50,10 +50,14 @@ create table delicte(
 create table condemna(
 	dies_pel_delicte int not null,
 	id_delicte int not null,
+	id_pres int not null,
 	constraint condemna_pk
-		primary key (id_delicte),
+		primary key (id_delicte,id_pres),
 	constraint condemna_delicte_fk
 		foreign key (id_delicte)
-		references delicte (id)
+		references delicte (id),
+	constraint condemna_pres_fk
+		foreign key (id_pres)
+		references pres (id)
 );
 ```
