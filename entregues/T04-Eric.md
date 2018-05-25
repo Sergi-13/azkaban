@@ -1,6 +1,6 @@
 Funció "Dia que surt"
 
-```
+```sql
 
 create function dbo.diaquesurt(@pres as int)
 returns date
@@ -10,8 +10,7 @@ as begin
 				from pres p
 				inner join condemna c
 				on p.id=c.id_pres
-				where p.id=@pres
-				group by p.data_ingres)
+				where p.id=@pres)
 	return @dia
 end
 
